@@ -1,1 +1,6 @@
 # WebStoreApp
+
+This is a demo Blazor WebAssembly project showcasing a full-stack implementation built entirely by myself. It utilizes Tailwind CSS for modern, utility-first styling along with HTML and JavaScript for the frontend structure and behavior. The backend logic is developed in C# with extensive use of LINQ and raw SQL queries for efficient data handling and retrieval from the database. From database design to UI creation, every layer of the application has been custom-built to demonstrate a seamless and interactive web experience.
+
+
+این یک پروژه دمو با استفاده از Blazor WebAssembly است که پیاده‌سازی کامل فول‌استک آن به صورت شخصی توسط من انجام شده است. در بخش فرانت‌اند از Tailwind CSS برای طراحی مدرن و utility-first به همراه HTML و JavaScript برای ساختار و تعاملات استفاده شده است. منطق بک‌اند با زبان C# توسعه یافته و از LINQ و کوئری‌های SQL برای مدیریت و واکشی بهینه داده‌ها از دیتابیس بهره گرفته شده است. از طراحی دیتابیس گرفته تا ساخت رابط کاربری، تمامی لایه‌های این برنامه به صورت اختصاصی ساخته شده تا تجربه‌ای یکپارچه و تعاملی را ارائه دهد.
