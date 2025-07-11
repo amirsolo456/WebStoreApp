@@ -1,0 +1,40 @@
+﻿@using System.Collections.ObjectModel
+@using WebStoreApp.Shared.Frameworks.Models
+
+<EditForm Model="Model" OnValidSubmit="Submit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    @foreach (var item in Model.OrderDescending())
+    {
+        if(item.Type.Trim() == "Text")
+        {
+            <WebStoreApp.Shared.Components.Common.Controls.CustomTextInput Prop="@item.Inputs"/>
+        }
+        else
+        {
+            <WebStoreApp.Shared.Components.Common.Controls.CustomSelectBox Prop="@item.Inputs" />
+        }
+    }
+
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</EditForm>
+
+@code {
+    [Parameter]
+    [SupplyParameterFromForm]
+    public IEnumerable<CustomControlsBaseClass> Model { get; set; }
+
+
+    protected override void OnInitialized()
+    {
+        Model ??= new ObservableCollection<CustomControlsBaseClass>();
+    }
+
+    private void Submit()
+    {
+
+    }
+}

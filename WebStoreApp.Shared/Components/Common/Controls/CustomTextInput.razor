@@ -1,0 +1,13 @@
+﻿@using WebStoreApp.Shared.Frameworks.Models
+<InputText @bind-Value="Prop.Value"
+           class="form-control"
+           placeholder="@Prop.Placeholder"
+           DisplayName="@Prop.ErroreMessage"
+           AdditionalAttributes="Prop.inputAttributes" />
+<ValidationMessage For="Prop.For" />
+
+@code {
+    [Parameter]
+    public CustomControlsPrameter Prop { get; set; }
+
+}

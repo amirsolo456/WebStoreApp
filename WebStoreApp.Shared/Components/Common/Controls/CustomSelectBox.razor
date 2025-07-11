@@ -1,0 +1,13 @@
+﻿@using WebStoreApp.Shared.Frameworks.Models
+<InputSelect TValue="@CustomControlsPrameter">
+    @foreach (var item in Prop.Options)
+    {
+        <option value="@item.Value" onselect="@Prop.SelectAction">
+            @item.Label
+        </option>
+    }   
+</InputSelect>
+@code {
+    [Parameter]
+    public CustomControlsPrameter Prop { get; set; }
+}

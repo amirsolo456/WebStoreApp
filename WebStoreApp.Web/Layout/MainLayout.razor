@@ -1,0 +1,22 @@
+﻿@inherits LayoutComponentBase
+<div class="page" style="flex-direction:row">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+    <WebStoreApp.Shared.Components.Common.Controls.CustomPasswordInput>
+
+    </WebStoreApp.Shared.Components.Common.Controls.CustomPasswordInput>
+@*     <div class="w-fit rounded-lg bg-cyan-500 px-5 py-4 text-6xl text-[#aa22ff]">
+        Hello Blazor and Tailwind
+    </div> *@
+
+    <main>
+        <div class="top-row px-4">
+            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
