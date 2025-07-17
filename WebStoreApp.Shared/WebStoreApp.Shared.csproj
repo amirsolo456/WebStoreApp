@@ -17,8 +17,12 @@
 
   <ItemGroup>
     <Folder Include="Components\App\Controls\" />
+    <Folder Include="Components\App\Controls\" />
+    <Folder Include="Components\App\Objects\" />
     <Folder Include="Components\App\Objects\" />
     <Folder Include="Components\Web\Controls\" />
+    <Folder Include="Components\Web\Controls\" />
+    <Folder Include="Services\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
