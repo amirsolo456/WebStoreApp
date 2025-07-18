@@ -17,11 +17,14 @@
 
   <ItemGroup>
     <Folder Include="Components\App\Controls\" />
+
     <Folder Include="Components\App\Controls\" />
     <Folder Include="Components\App\Objects\" />
     <Folder Include="Components\App\Objects\" />
     <Folder Include="Components\Web\Controls\" />
     <Folder Include="Components\Web\Controls\" />
+    <Folder Include="Layouts\App\" />
+    <Folder Include="Layouts\Common\" />
     <Folder Include="Services\" />
     <Folder Include="Services\" />
   </ItemGroup>
@@ -32,6 +35,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>TailwindCheatSheet.resx</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\Resources\Styles\Styles.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

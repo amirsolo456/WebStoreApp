@@ -1,0 +1,87 @@
+﻿@using WebStoreApp.Shared.Frameworks.Models
+<div class="grid grid-cols-3 bg-white" style="direction:rtl">
+    <div>
+        <div class="border" style="border-radius:10px">
+
+            <img 
+            src="Resources/Images/bassket.svg" />
+        </div>
+    </div>
+    <div>
+        <WebStoreApp.Shared.Components.Common.Controls.CustomTextInput Prop="@customControls"  />
+    </div>
+    <div class="flex">
+        <div class="">
+            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank"
+            class="MainHeaderClass">
+                Stickers
+            </a>
+        </div>
+        <div class="">
+            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank"
+            class="MainHeaderClass">
+
+                Shirts
+            </a>
+        </div>
+        <div class="flex h-16 items-center justify-center">
+            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank"
+            class="MainHeaderClass">
+                All
+            </a>
+        </div>
+        <div class="cursor-pointer flex-col"
+        onclick="@OnLogoClick">
+
+            <label tabindex="0">
+                ACME Store
+            </label>
+            <div class="border-gray-300" style="border-radius:10px">
+                <img tabindex="1"
+                src="Resources/Images/logo.svg" />
+            </div>
+        </div>
+    </div>
+</div>
+@code {
+    private CustomControlsPrameter<string> customControls { get; set; } = new CustomControlsPrameter<string>();
+    protected override Task OnInitializedAsync()
+    {
+        try
+        {
+            eventHandler += async (s, x) =>
+            {
+                await Event(s, x);
+            };
+
+            customControls = new CustomControlsPrameter<string>("Search")
+                {
+                    FieldName = "a",
+                    ErroreMessage = "Error",
+                    Label = "a",
+                    Placeholder = "a",
+                    OnValueChanged = async (s, e) => {await Event(s, e); }
+                };
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+
+
+        }
+        return base.OnInitializedAsync(); 
+    }
+ 
+    public EventHandler<string> eventHandler { get; set; }
+    private async Task Event(object sender, string value)
+    {
+
+    }
+ 
+
+    private void OnLogoClick()
+    {
+        // Handle logo click event
+        Console.WriteLine("Logo clicked!");
+    }
+}

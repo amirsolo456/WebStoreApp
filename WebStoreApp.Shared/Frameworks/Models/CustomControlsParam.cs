@@ -1,11 +1,17 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Components.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Components.Rendering;
 
 namespace WebStoreApp.Shared.Frameworks.Models
 {
@@ -14,53 +20,60 @@ namespace WebStoreApp.Shared.Frameworks.Models
         [Required]
         public int ID { get; set; }
         public string Type { get; set; }
-        public CustomControlsPrameter Inputs { get; set; }
+        public CustomControlsPrameter<string> Inputs { get; set; }
         public CustomSelectBox SelectBoxes { get; set; }
     }
 
 
-    public record CustomControlsPrameter(string Type = "Text")
+    public record CustomControlsPrameter<T>(string Type = "Text") 
     {
-        [Parameter]
         public string? Placeholder { get; set; }
-        public List<CustomControlsPrameter> Options { get; set; }
-        [Parameter]
-        public string? Value { get; set; }
+        private T? _value=default;
+        public T? Value 
+        { 
+            get => _value;
+            set
+            {
+                _value = value;
+                OnValueChanged?.Invoke(this, value);
+            }
+        }
         public string? Label { get; set; }
         public string? FieldName { get; set; }
-        [Parameter]
         public string? ErroreMessage { get; set; }
-        [Parameter]
-        public Expression<Func<object>>? For { get; set; }
-        //public string Type { get; set; } = "Text";
-        public Dictionary<string, object> inputAttributes => new()
-        {
-            ["type"] = Type
-        };
-
-        public EventHandler<CustomControlsPrameter> SelectAction { get; set; }
+        public string? type { get; set; } = Type;
+        public EventHandler<T>? OnValueChanged { get; set; }
+        public int Delay { get; set; } = 2000;  
     }
 
-    public partial class CustomSelectBox(string Type)  
+    public   class CustomSelectBox(string Type)  
     {
-        [Required]
         public string ID { get; set; }
         public string Label { get; set; }
         public string? Value { get; set; }
         public string? FieldName { get; set; }
-        [Required]
         public string Especialidad { get; set; }
+        public List<SelectBoxItem>? Options { get; set; }
         public Dictionary<string, object> inputAttributes => new()
         {
             ["type"] = Type
         };
-        public EventHandler<CustomControlsPrameter> SelectAction { get; set; }
+        public EventHandler<SelectBoxItem> OnValueChanged { get; set; }
     }
 
-
-    public record EditFormFieldsPropertys
+    public record SelectBoxItem
     {
-        public IEnumerable<CustomControlsPrameter> Inputs { get; set; }
-        public IEnumerable<CustomSelectBox> SelectBoxes { get; set; }
+        public string ID { get; set; }
+        public string Label { get; set; }
+        public string? Value { get; set; }
+        public string? FieldName { get; set; }
+        public string Especialidad { get; set; }
     }
+
+
+    //public record EditFormFieldsPropertys
+    //{
+    //    public IEnumerable<CustomControlsPrameter> Inputs { get; set; }
+    //    public IEnumerable<CustomSelectBox> SelectBoxes { get; set; }
+    //}
 }

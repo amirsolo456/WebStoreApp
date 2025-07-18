@@ -1,13 +1,31 @@
-﻿@using WebStoreApp.Shared.Frameworks.Models
-<InputText @bind-Value="Prop.Value"
-           class="form-control"
-           placeholder="@Prop.Placeholder"
-           DisplayName="@Prop.ErroreMessage"
-           AdditionalAttributes="Prop.inputAttributes" />
-<ValidationMessage For="Prop.For" />
+﻿@using WebStoreApp.Shared.Components.Common.Controls.Classes.CustomControls
+@using WebStoreApp.Shared.Frameworks.Models
+ 
 
+<EditForm Model="Prop" FormName="Starship9">
+    <InputTextCustomClient @bind-Value="Prop.Value"
+            Type="@Prop.type"
+            class="form-control"
+            DisplayName="@Prop.ErroreMessage"
+                           OnTextChanged="HandleDebouncedTextChanged"
+            placeholder="@Prop.Placeholder" />
+
+    <ValidationMessage For="() => Prop.Value" />
+</EditForm>
 @code {
     [Parameter]
-    public CustomControlsPrameter Prop { get; set; }
+    public CustomControlsPrameter<string> Prop { get; set; }
+    void HandleDebouncedTextChanged(string value)
+    {
+        Console.WriteLine($"Text changed with debounce: {value}");
+        // اینجا می‌تونید درخواست API بزنید یا منطق دیگه اجرا کنید
+    }
 
+    // [Parameter] public Expression<Func<string>>? ValueExpression { get; set; }
+    // protected override bool TryParseValueFromString(string? value, out string result, out string validationErrorMessage)
+    // {
+    //     result = value ?? string.Empty;
+    //     validationErrorMessage = null;
+    //     return true;
+    // }
 }
